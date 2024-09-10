@@ -23,7 +23,7 @@ mongoose.connect('mongodb+srv://admin:ztUys0KA2QDY6Pp4@cluster0.225dn.mongodb.ne
         type: Date,
         default: Date.now,
     },
-});   */                                      
+});   */
 
 const DataSchema = new mongoose.Schema({
     pm1: String,
@@ -33,15 +33,15 @@ const DataSchema = new mongoose.Schema({
         type: Date,
         default: Date.now,
     },
-});  
+});
 
-const Data = mongoose.model('Data', DataSchema,'value');    //ชื่อ collection
+const Data = mongoose.model('Data', DataSchema, 'value');    //ชื่อ collection
 
 // POST route to receive data from ESP32
 app.post('/api/data', (req, res) => {
-    const { pm1, pm2_5,  pm10 } = req.body;
+    const { pm1, pm2_5, pm10 } = req.body;
 
-    const data = new Data({ pm1, pm2_5,  pm10 });
+    const data = new Data({ pm1, pm2_5, pm10 });
 
     data.save()
         .then(() => res.status(201).send('Data saved successfully'))
