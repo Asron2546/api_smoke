@@ -26,9 +26,9 @@ mongoose.connect('mongodb+srv://admin:ztUys0KA2QDY6Pp4@cluster0.225dn.mongodb.ne
 });   */
 
 const DataSchema = new mongoose.Schema({
-    pm1: String,
-    pm2_5: String,
-    pm10: String,
+    pm1: Number,
+    pm2_5: Number,
+    pm10: Number,
     timestamp: {
         type: Date,
         default: Date.now,
