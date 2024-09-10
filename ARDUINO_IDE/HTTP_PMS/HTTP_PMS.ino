@@ -97,7 +97,7 @@ void loop()
     }
     else
     {
-      Serial.print("Error on sending POST: ");
+      Serial.print("    Error on sending POST: ");
       Serial.println(httpResponseCode);
     }
     http.end();
