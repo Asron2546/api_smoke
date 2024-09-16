@@ -1,5 +1,4 @@
-
-#define sensor 39
+#define sensor 4
 
 void setup() {
   Serial.begin(9600);
@@ -7,8 +6,7 @@ void setup() {
 }
 
 void loop() {
-  //int value = analogRead(sensor);
-  int value = digitalRead(sensor);
+  int value = analogRead(sensor);
   
   if(value > 4000){
     Serial.print(value);
@@ -16,24 +14,3 @@ void loop() {
     }
   else{Serial.println(value);}
 }
-
-/*
-#define analogMin 521
-#define analogMax 525
-int analogAverage = (analogMin+analogMax)/2; //ไม่เอาทศนิยม
-
-void setup() {
-  Serial.begin(9600);
-}
-
-// the loop routine runs over and over again forever:
-void loop() {
-  int sensorValue = analogRead(39);
-  
-  if(sensorValue >= analogMin && sensorValue <= analogMax){
-    sensorValue = analogAverage;
-  }
-  
-  Serial.println(sensorValue);
-}
-*/
