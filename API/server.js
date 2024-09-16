@@ -15,16 +15,6 @@ mongoose.connect('mongodb+srv://admin:ztUys0KA2QDY6Pp4@cluster0.225dn.mongodb.ne
 });
 
 // Create a schema and model for the data  
-
-/*const DataSchema = new mongoose.Schema({
-    temperature: String,
-    humidity: String,
-    timestamp: {
-        type: Date,
-        default: Date.now,
-    },
-});   */
-
 const DataSchema = new mongoose.Schema({
     pm1: Number,
     pm2_5: Number,
