@@ -1,7 +1,7 @@
 #define sensor 4
 
 void setup() {
-  Serial.begin(9600);
+  Serial.begin(115200);
   pinMode(sensor, INPUT);
 }
 
