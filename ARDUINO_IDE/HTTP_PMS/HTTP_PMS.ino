@@ -7,7 +7,7 @@ const char *ssid = "RMUTSV_IoT";
 const char *password = "CoE39201";
 
 // const char* serverName = "http://localhost:3000/api/data"; // Replace with your server IP  API
-const char *serverName = "http://172.25.18.99:3000/api/data"; // Replace with your server IP  API
+const char *serverName = "http://172.16.8.143:3000/api/data"; // Replace with your server IP  API
 
 void setup()
 {
@@ -37,6 +37,7 @@ void loop()
     int index = 0;
     char value;
     char previousValue;
+    String smoke_detector = "001";
     String pm1;
     String pm2_5;
     String pm10;
@@ -84,8 +85,9 @@ void loop()
       mySerial.read();
 
     http.begin(serverName);
-    http.addHeader("Content-Type", "application/json");
+    http.addHeader("Content-Type", "application/json");    
 
+    //String jsonData = "{\"smoke_detector\":" + String(smoke_detector) + ",\"pm1\":" + String(pm1) + ",\"pm2_5\":" + String(pm2_5) + ",\"pm10\":" + String(pm10) +  "}";
     String jsonData = "{\"pm1\":" + String(pm1) + ",\"pm2_5\":" + String(pm2_5) + ",\"pm10\":" + String(pm10) + "}";
     int httpResponseCode = http.POST(jsonData);
 
