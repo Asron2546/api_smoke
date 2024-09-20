@@ -1,3 +1,4 @@
+
 #include <WiFi.h>
 #include <HTTPClient.h>
 #include <SoftwareSerial.h>
@@ -40,6 +41,7 @@ void loop()
     int index = 0;
     char value;
     char previousValue;
+    String smoke_detector = "001";
     String pm1;
     String pm2_5;
     String pm10;
@@ -89,7 +91,9 @@ void loop()
     http.begin(serverName);
     http.addHeader("Content-Type", "application/json");
 
-    String jsonData = "{\"pm1\":" + String(pm1) + ",\"pm2_5\":" + String(pm2_5) + ",\"pm10\":" + String(pm10) + "}";
+    String jsonData = "{\"smoke_detector\":\"" + String(smoke_detector) + "\",\"pm1\":" + String(pm1) + ",\"pm2_5\":" + String(pm2_5) + ",\"pm10\":" + String(pm10) + "}";
+    
+    Serial.println(jsonData);  // พิมพ์ JSON ที่จะส่งออกไป                 
     int httpResponseCode = http.POST(jsonData);
 
     if (httpResponseCode > 0)
