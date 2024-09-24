@@ -1,17 +1,13 @@
-
+//#include <VIRUS_WIFI.h>
 #include <WiFi.h>
 #include <HTTPClient.h>
 #include <SoftwareSerial.h>
 SoftwareSerial mySerial(21, 22); // RX, TX
 
-//const char *ssid = "RMUTSV_IoT";
-//const char *password = "CoE39201";
+const char *ssid = "RMUTSV_IoT";
+const char *password = "CoE39201";
 
-const char *ssid = "VIRUS_2.4GHz";
-const char *password = "073332227";
-
-// const char* serverName = "http://localhost:3000/api/data"; // Replace with your server IP  API
-const char *serverName = "http://192.168.1.109:3000/api/data"; // Replace with your server IP  API
+const char *serverName = "http://172.25.62.67:3000/api/data"; // Replace with your server IP  API
 
 void setup()
 {

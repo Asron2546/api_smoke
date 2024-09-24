@@ -1,11 +1,11 @@
 #include <WiFi.h>
 #include <HTTPClient.h>
 
-const char* ssid = "Gg";
-const char* password = "12345678";
+const char *ssid = "RMUTSV_IoT";
+const char *password = "CoE39201";
 
 //const char* serverName = "http://localhost:3000/api/data"; // Replace with your server IP  API
-const char* serverName = "http://192.168.43.232:3000/api/data"; // Replace with your server IP  API
+const char* serverName = "http://172.25.62.67:3000/api/data"; // Replace with your server IP  API
 
 void setup() {
   Serial.begin(115200);

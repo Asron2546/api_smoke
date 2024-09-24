@@ -22,6 +22,8 @@ const DataSchema = new mongoose.Schema({
     pm10: Number,
     temperature: Number,
     humidity: Number,  
+
+    
     co2: Number, 
     ammonia: Number, 
     gas: Number,  
