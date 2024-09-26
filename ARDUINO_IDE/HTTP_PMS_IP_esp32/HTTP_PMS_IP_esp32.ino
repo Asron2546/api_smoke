@@ -1,13 +1,18 @@
 //#include <VIRUS_WIFI.h>
+//#include <iPhoneWIFI.h>
 #include <WiFi.h>
 #include <HTTPClient.h>
 #include <SoftwareSerial.h>
 SoftwareSerial mySerial(21, 22); // RX, TX
 
-const char *ssid = "RMUTSV_IoT";
-const char *password = "CoE39201";
+//const char *ssid = "RMUTSV_IoT";
+//const char *password = "CoE39201";
 
-const char *serverName = "http://172.25.62.67:3000/api/data"; // Replace with your server IP  API
+const char *ssid = "Ronvisly";
+const char *password = "88888888";
+
+const char *serverName = "http://172.20.10.4:3000/api/data"; // Replace with your server IP  API
+String smoke_detector = "001";
 
 void setup()
 {
@@ -37,10 +42,9 @@ void loop()
     int index = 0;
     char value;
     char previousValue;
-    String smoke_detector = "001";
-    String pm1;
-    String pm2_5;
-    String pm10;
+    String pm1 = "0";
+    String pm2_5 = "0";
+    String pm10 = "0";
 
     while (mySerial.available())
     {
