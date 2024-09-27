@@ -22,8 +22,6 @@ const DataSchema = new mongoose.Schema({
     pm10: Number,
     temperature: Number,
     humidity: Number,  
-
-    
     co2: Number, 
     ammonia: Number, 
     gas: Number,  
@@ -37,11 +35,11 @@ const Data = mongoose.model('Data', DataSchema, 'value');    //ชื่อ coll
 
 // POST route to receive data from ESP32
 app.post('/api/data', (req, res) => {
-    //const { smoke_detector, pm1, pm2_5, pm10, temperature, humidity, co2, ammonia, gas  } = req.body;
-    const { smoke_detector, pm1, pm2_5, pm10 } = req.body;
+    const { smoke_detector, pm1, pm2_5, pm10, temperature, humidity, co2, ammonia, gas  } = req.body;
+    //const { smoke_detector, pm1, pm2_5, pm10 } = req.body;
     
-    //const data = new Data({ smoke_detector, pm1, pm2_5, pm10, temperature, humidity, co2, ammonia, gas });
-    const data = new Data({ smoke_detector, pm1, pm2_5, pm10 });
+    const data = new Data({ smoke_detector, pm1, pm2_5, pm10, temperature, humidity, co2, ammonia, gas });
+    //const data = new Data({ smoke_detector, pm1, pm2_5, pm10 });
                             
     data.save()
         .then(() => res.status(201).send('Data saved successfully'))
