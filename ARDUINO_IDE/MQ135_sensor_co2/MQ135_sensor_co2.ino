@@ -1,9 +1,10 @@
-#define MQ_135 2
+#define MQ_135 4
 float analysis(int);
 float Rs; 
 
 void setup() {
   Serial.begin(115200);
+  pinMode(MQ_135,INPUT);
 }
 
 void loop() {
@@ -13,10 +14,8 @@ void loop() {
   Serial.print("\t");
   Serial.print("CO2 : ");
   Serial.print(analysis(sensorValue), 3);  // คำนวณค่า CO2
-  Serial.print(" ppm");
-  Serial.print("\t");
-  Serial.print("Sensor Resistance : ");
-  Serial.println(Rs);
+  Serial.println(" ppm");
+  
   delay(500);
 }
 
