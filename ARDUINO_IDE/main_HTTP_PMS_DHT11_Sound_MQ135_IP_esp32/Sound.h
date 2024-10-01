@@ -24,7 +24,7 @@ bool soundSensor(){
     decibel = 0;  // กำหนดให้ค่า dB เป็น 0 เมื่อไม่มีแรงดันไฟฟ้า
   }
 
-  Serial.print("\tDecibel: ");
+  Serial.print("\nDecibel: ");
   Serial.print(decibel);
   Serial.print(" dB");
 

@@ -27,7 +27,7 @@ bool readSensor(String &pm1, String &pm2_5, String &pm10) {
     }
     else if (index == 5) {
       pm1 = 256 * previousValue + value;
-      Serial.print("\npm1: ");
+      Serial.print("\tpm1: ");
       Serial.print(pm1);
       Serial.print("  ");
     }

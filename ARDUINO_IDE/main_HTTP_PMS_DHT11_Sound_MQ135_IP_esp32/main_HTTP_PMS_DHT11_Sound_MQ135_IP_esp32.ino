@@ -13,7 +13,7 @@ Bonezegei_DHT11 dht(5);  // DHT11 PIN 5
 
 const char *ssid = "Ronvisly";
 const char *password = "88888888";
-const char *serverName = "http://172.25.61.211:3000/api/data"; 
+const char *serverName = "http://172.20.10.4:3000/api/data"; 
 String smoke_detector = "001";
 
 // ฟังก์ชันสำหรับการเชื่อมต่อ WiFi
@@ -42,7 +42,7 @@ void sendData(String smoke_detector, String pm1, String pm2_5, String pm10, Stri
                     ",\"ammonia\":" + ammonia +
                     ",\"gas\":" + gas + "}";  
 
-  //Serial.println(jsonData);
+  Serial.println(jsonData);
 
   int httpResponseCode = http.POST(jsonData);
 
@@ -65,33 +65,31 @@ void setup() {
 }
 
 void loop() {
-  if(){
-    we
-    if(WiFi.status() == WL_CONNECTED) {
-      String pm1 = "0";
-      String pm2_5 = "0";
-      String pm10 = "0";
-      String temperature = "0";
-      String humidity = "0";
+  soundSensor();
   
-      // อ่านข้อมูลจากเซ็นเซอร์ PM และ DHT11
-      readSensor(pm1, pm2_5, pm10);
-      readDHT11(temperature, humidity);
+  if(WiFi.status() == WL_CONNECTED) {
+    String pm1 = "0";
+    String pm2_5 = "0";
+    String pm10 = "0";
+    String temperature = "0";
+    String humidity = "0";
+ 
+    // อ่านข้อมูลจากเซ็นเซอร์ PM และ DHT11
+    readSensor(pm1, pm2_5, pm10);
+    readDHT11(temperature, humidity);
     
-      // อ่านค่า MQ135 และคำนวณค่า co2, ammonia, gas
-      int sensorValue = analogRead(MQ_135);
-      String co2 = String(analysisco2(sensorValue), 3);
-      String ammonia = String(analysisammonia(sensorValue), 3);
-      String gas = String(analysisgas(sensorValue), 3);
+    // อ่านค่า MQ135 และคำนวณค่า co2, ammonia, gas
+    int sensorValue = analogRead(MQ_135);
+    String co2 = String(analysisco2(sensorValue), 3);
+    String ammonia = String(analysisammonia(sensorValue), 3);
+    String gas = String(analysisgas(sensorValue), 3);
   
-      Serial.println("\nco2: " + co2 + "  ammonia: " + ammonia +"  gas: " + gas);
+    Serial.println("\nco2: " + co2 + "  ammonia: " + ammonia +"  gas: " + gas);
       
-      // ส่งข้อมูลไปยัง API
-      sendData(smoke_detector, pm1, pm2_5, pm10, temperature, humidity, co2, ammonia, gas);
-    
-    }
+    // ส่งข้อมูลไปยัง API
+    sendData(smoke_detector, pm1, pm2_5, pm10, temperature, humidity, co2, ammonia, gas);
   }
-    soundSensor();
+
 
   //delay(5000); 
 }

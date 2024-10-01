@@ -3,11 +3,11 @@
 #include <SoftwareSerial.h>
 SoftwareSerial mySerial(21, 22); // RX, TX
 
-const char *ssid = "RMUTSV_IoT";
-const char *password = "CoE39201";
+//const char *ssid = "RMUTSV_IoT";
+//const char *password = "CoE39201";
 
 // const char* serverName = "http://localhost:3000/api/data"; // Replace with your server IP  API
-const char *serverName = "http://172.25.62.67:3000/api/data"; // Replace with your server IP  API
+const char *serverName = "http://172.20.10.4:3000/api/data"; // Replace with your server IP  API
 
 void setup()
 {

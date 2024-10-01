@@ -1,4 +1,4 @@
-#include <VIRUS_WIFI.h>
+//#include <VIRUS_WIFI.h>
 #include <WiFi.h>
 #include <HTTPClient.h>
 #include <SoftwareSerial.h>
@@ -8,9 +8,9 @@
 SoftwareSerial mySerial(21, 22); // RX, TX
 Bonezegei_DHT11 dht(5);  // DHT11 PIN 5
 
-//const char *ssid = "Ronvisly";
-//const char *password = "88888888";
-const char *serverName = "http://192.168.1.109:3000/api/data"; 
+const char *ssid = "Ronvisly";
+const char *password = "88888888";
+const char *serverName = "http://172.25.61.211:3000/api/data"; 
 String smoke_detector = "001";
 
 // ฟังก์ชันสำหรับการเชื่อมต่อ WiFi
