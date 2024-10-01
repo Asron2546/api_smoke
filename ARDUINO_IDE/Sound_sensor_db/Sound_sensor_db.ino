@@ -1,12 +1,12 @@
-#define sensor 4
+#define sound_sensor 35
 
 void setup() {
   Serial.begin(115200);
-  pinMode(sensor, INPUT);
+  pinMode(sound_sensor, INPUT);
 }
 
 void loop() {
-  int value = analogRead(sensor);  // อ่านค่าจากเซ็นเซอร์เสียง
+  int value = analogRead(sound_sensor);  // อ่านค่าจากเซ็นเซอร์เสียง
   
   // แปลงค่า ADC เป็นแรงดันไฟฟ้า
   float voltage = (value / 4095.0) * 3.3;  // แปลงค่า ADC เป็นแรงดันไฟฟ้า (ESP32 ใช้ 12-bit ADC, 0-4095)
