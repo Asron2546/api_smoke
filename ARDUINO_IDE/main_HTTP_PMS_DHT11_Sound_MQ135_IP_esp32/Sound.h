@@ -2,12 +2,11 @@
 #define SOUND_H
 
 #define sound_sensor 35 
-
-
+extern const int buzzer;
 void setupSOUND() {
   pinMode(sound_sensor, INPUT);
 }
-bool soundSensor(){
+float soundSensor(){
   
   int value_sound = analogRead(sound_sensor);  // อ่านค่าจากเซ็นเซอร์เสียง
   //Serial.print("ADC Value: ");
@@ -24,15 +23,19 @@ bool soundSensor(){
     decibel = 0;  // กำหนดให้ค่า dB เป็น 0 เมื่อไม่มีแรงดันไฟฟ้า
   }
 
-  Serial.print("\nDecibel: ");
-  Serial.print(decibel);
-  Serial.print(" dB");
+  //Serial.print("\nDecibel: ");
+  //Serial.print(decibel);
+  //Serial.print(" dB");
 
   // ตรวจสอบระดับเสียง
   if (decibel > 68.50) {  // สามารถปรับเกณฑ์เสียงดังได้ตามต้องการ
     Serial.println("  เสียงดังเกิ๊นนนนนนนนนน");
-    
+    digitalWrite(buzzer, LOW);
+    delay(500);
   }
+  else{
+    digitalWrite(buzzer, HIGH);
+    }
   return decibel;  
 }
 

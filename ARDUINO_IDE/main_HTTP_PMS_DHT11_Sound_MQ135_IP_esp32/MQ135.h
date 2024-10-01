@@ -50,6 +50,16 @@ float analysisgas(int adc) {
 
   float Y = Rs / R0;
   float gas_gas = pow(10, (log10(Y / A) / slope));  // คำนวณความเข้มข้นของแก๊ส gas (ppm)
+  if(gas_gas > 10000){
+    gas_gas = 10000;
+    }
+  if(gas_gas > 1000){
+    digitalWrite(buzzer, LOW);
+    delay(500);
+    }
+    else{
+      digitalWrite(buzzer, HIGH);
+      }
   return gas_gas;
 }
 

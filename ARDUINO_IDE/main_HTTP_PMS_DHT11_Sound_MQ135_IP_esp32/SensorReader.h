@@ -6,6 +6,7 @@
 
 // ประกาศตัวแปรภายนอก mySerial เพื่อให้ฟังก์ชันเข้าถึงได้
 extern SoftwareSerial mySerial;
+extern const int buzzer;
 
 // ฟังก์ชันสำหรับการอ่านค่าฝุ่นจากเซนเซอร์
 bool readSensor(String &pm1, String &pm2_5, String &pm10) {
