@@ -7,17 +7,21 @@
 #include "MQ135.h"         
 #include "Sound.h"
 
+#define led_state 19
+
 long last_time;
 const int buzzer = 23;
 SoftwareSerial mySerial(21, 22); // RX, TX
 Bonezegei_DHT11 dht(5);  // DHT11 PIN 5
 
-const char *ssid = "RMUTSV_IoT";
-const char *password = "CoE39201";
+//const char *ssid = "RMUTSV_IoT";
+//const char *password = "CoE39201";
+const char *ssid = "Error404_2.4GHz";
+const char *password = "10011001";
 //const char *ssid = "Ronvisly";
 //const char *password = "88888888";
 
-const char *serverName = "http://172.25.61.211:3000/api/data"; 
+const char *serverName = "http://192.168.1.10:3000/api/data"; 
 String smoke_detector = "001";
 
 // ฟังก์ชันสำหรับการเชื่อมต่อ WiFi
@@ -63,14 +67,20 @@ void sendData(String smoke_detector, String pm1, String pm2_5, String pm10, Stri
 void setup() {
   Serial.begin(115200);
   mySerial.begin(9600);
-  pinMode(buzzer, OUTPUT);
+  pinMode(buzzer, OUTPUT);        // buzzer
   digitalWrite(buzzer, HIGH);
+  pinMode(led_state, OUTPUT);     // led_state
+  digitalWrite(led_state, LOW);
+  
   setupMQ135();
   setupSOUND();
   connectWiFi();
 }
 
 void loop() {
+  if(){
+    digitalWrite(led_state, LOW);
+    }
   soundSensor();
   if(millis() - last_time > 5000){
     if(WiFi.status() == WL_CONNECTED) {

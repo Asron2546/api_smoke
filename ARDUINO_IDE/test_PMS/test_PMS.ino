@@ -1,5 +1,6 @@
 #include <SoftwareSerial.h>
-SoftwareSerial mySerial(21, 22); // RX, TX
+SoftwareSerial mySerial(6, 7); // RX, TX
+//SoftwareSerial mySerial(21, 22); // RX, TX
 
 unsigned int pm1 = 0;
 unsigned int pm2_5 = 0;

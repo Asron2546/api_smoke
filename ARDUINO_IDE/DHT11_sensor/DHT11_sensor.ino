@@ -1,7 +1,7 @@
 #include <Bonezegei_DHT11.h>
 
 //param = DHT11 signal pin
-Bonezegei_DHT11 dht(15);
+Bonezegei_DHT11 dht(D3);
 
 void setup() {
   Serial.begin(115200);
