@@ -5,6 +5,9 @@
 
 SoftwareSerial mySerial(21, 22); // RX, TX
 
+
+const char *ssid = "RMUTSV_IoT";
+const char *password = "CoE39201";
 //const char *ssid = "Ronvisly";
 //const char *password = "88888888";
 

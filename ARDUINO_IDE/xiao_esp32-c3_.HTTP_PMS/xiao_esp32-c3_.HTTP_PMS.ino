@@ -1,6 +1,6 @@
 #include <WiFi.h>
 #include <HTTPClient.h>
-#include <SoftwareSerial.h>
+//#include <SoftwareSerial.h>
 
 const char *ssid = "RMUTSV_IoT";
 const char *password = "CoE39201";

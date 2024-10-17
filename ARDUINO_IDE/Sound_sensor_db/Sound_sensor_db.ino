@@ -1,4 +1,4 @@
-#define sound_sensor 35
+#define sound_sensor A1
 
 void setup() {
   Serial.begin(115200);
@@ -28,7 +28,7 @@ void loop() {
   Serial.println(" dB");
 
   // ตรวจสอบระดับเสียง
-  if (decibel > 69) {  // สามารถปรับเกณฑ์เสียงดังได้ตามต้องการ
+  if (decibel > 70) {  // สามารถปรับเกณฑ์เสียงดังได้ตามต้องการ
     Serial.println("เสียงดังเกิ๊นนนนนนนนนน");
   }
 

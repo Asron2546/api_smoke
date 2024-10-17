@@ -1,4 +1,3 @@
-//#include <VIRUS_WIFI.h>
 #include <WiFi.h>
 #include <HTTPClient.h>
 #include <SoftwareSerial.h>
