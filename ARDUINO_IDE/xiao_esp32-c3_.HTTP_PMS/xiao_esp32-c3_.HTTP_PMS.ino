@@ -1,15 +1,14 @@
 #include <WiFi.h>
 #include <HTTPClient.h>
 #include <SoftwareSerial.h>
-SoftwareSerial mySerial(20, 21); // RX, TX
 
-//const char *ssid = "RMUTSV_IoT";
-//const char *password = "CoE39201";
-const char *ssid = "Ronvisly";
-const char *password = "88888888";
+const char *ssid = "RMUTSV_IoT";
+const char *password = "CoE39201";
+//const char* ssid = "vivoV27";
+//const char* password = "0887528810";
 
 // const char* serverName = "http://localhost:3000/api/data"; // Replace with your server IP  API
-const char *serverName = "http://172.25.61.252:3000/api/data"; // Replace with your server IP  API
+const char *serverName = "http://172.25.60.224:3000/api/data"; // Replace with your server IP  API
 
 void setup()
 {
@@ -18,8 +17,8 @@ void setup()
 
   while (!Serial)
     ;
-  mySerial.begin(9600);
-
+  // เริ่มต้นการใช้งาน Serial1 (TX = GPIO 7, RX = GPIO 6)
+    Serial1.begin(9600, SERIAL_8N1, 6, 7);  // RX, TX สำหรับ PMS
   WiFi.begin(ssid, password);
   while (WiFi.status() != WL_CONNECTED)
   {
@@ -43,9 +42,9 @@ void loop()
     String pm2_5;
     String pm10;
 
-    while (mySerial.available())
+    while (Serial1.available())
     {
-      value = mySerial.read();
+      value = Serial1.read();
       if ((index == 0 && value != 0x42) || (index == 1 && value != 0x4d))
       {
         Serial.println("Cannot find the data header.");
@@ -82,15 +81,15 @@ void loop()
       }
       index++;
     }
-    while (mySerial.available())
-      mySerial.read();
+    while (Serial1.available())
+      Serial1.read();
 
     http.begin(serverName);
     http.addHeader("Content-Type", "application/json");
 
     String jsonData = "{\"pm1\":" + String(pm1) + ",\"pm2_5\":" + String(pm2_5) + ",\"pm10\":" + String(pm10) + "}";
     int httpResponseCode = http.POST(jsonData);
-
+    Serial.print(jsonData);
     if (httpResponseCode > 0)
     {
       String response = http.getString();
