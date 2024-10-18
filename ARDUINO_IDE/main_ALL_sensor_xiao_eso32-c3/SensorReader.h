@@ -4,8 +4,6 @@
 #include <Arduino.h>
 #include <SoftwareSerial.h>
 
-// ประกาศตัวแปรภายนอก mySerial เพื่อให้ฟังก์ชันเข้าถึงได้
-extern SoftwareSerial mySerial;
 extern const int buzzer;
 
 // ฟังก์ชันสำหรับการอ่านค่าฝุ่นจากเซนเซอร์
@@ -15,8 +13,8 @@ bool readSensor(String &pm1, String &pm2_5, String &pm10) {
   char previousValue;
   bool validData = true;
 
-  while (mySerial.available()) {
-    value = mySerial.read();
+  while (Serial1.available()) {
+    value = Serial1.read();
     if ((index == 0 && value != 0x42) || (index == 1 && value != 0x4d)) {
       Serial.println("Cannot find the data header.");
       validData = false;
@@ -50,8 +48,8 @@ bool readSensor(String &pm1, String &pm2_5, String &pm10) {
     index++;
   }
 
-  while (mySerial.available())
-    mySerial.read();  // เคลียร์ buffer
+  while (Serial1.available())
+    Serial1.read();  // เคลียร์ buffer
 
   return validData;
 }
