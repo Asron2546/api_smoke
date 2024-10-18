@@ -7,7 +7,6 @@
 
 #define led_state D9
 
-SoftwareSerial mySerial(6, 7);  // ขา RX, TX สำหรับเซนเซอร์ PMS
 Bonezegei_DHT11 dht(D3);        // ขา D3 สำหรับ DHT11
 const int buzzer = D10;          // ขา D10 สำหรับ buzzer
 long last_time,last_time1;
@@ -92,7 +91,7 @@ void loop() {
       // อ่านข้อมูลจากเซ็นเซอร์ PM และ DHT11
       readSensor(pm1, pm2_5, pm10);
       readDHT11(temperature, humidity);
-      Serial.print("\npm1: " + pm1 + "  pm2_5: " + pm2_5 +"  pm10: " + pm10);
+ 
       // อ่านค่า MQ135 และคำนวณค่า co2, ammonia, gas
       int sensorValue = analogRead(MQ_135);
       String co2 = String(analysisco2(sensorValue), 3);
