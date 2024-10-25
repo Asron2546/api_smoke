@@ -22,6 +22,7 @@ float analysisco2(int adc) {
 
   float Y = Rs / R0;
   float co2_gas = pow(10, (log10(Y / A) / slope));  // คำนวณความเข้มข้นของแก๊ส co2 (ppm)
+  if(isnan(co2_gas)){co2_gas = 9999999;}
   return co2_gas;
 }
 
@@ -36,6 +37,7 @@ float analysisammonia(int adc) {
 
   float Y = Rs / R0;
   float Ammonia_gas = pow(10, (log10(Y / A) / slope));  // คำนวณความเข้มข้นของแก๊ส ammonia (ppm)
+  if(isnan(Ammonia_gas)){Ammonia_gas = 9999999;}
   return Ammonia_gas;
 }
 
@@ -50,9 +52,7 @@ float analysisgas(int adc) {
 
   float Y = Rs / R0;
   float gas_gas = pow(10, (log10(Y / A) / slope));  // คำนวณความเข้มข้นของแก๊ส gas (ppm)
-  if(gas_gas > 10000){
-    gas_gas = 10000;
-    }
+  if(isnan(gas_gas)){gas_gas = 9999999;}
   if(gas_gas > 1000){
     digitalWrite(buzzer, LOW);
     delay(500);

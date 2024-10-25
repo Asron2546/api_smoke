@@ -23,18 +23,14 @@ float soundSensor(){
     decibel = 0;  // กำหนดให้ค่า dB เป็น 0 เมื่อไม่มีแรงดันไฟฟ้า
   }
 
-  //Serial.print("\nDecibel: ");
-  //Serial.print(decibel);
-  //Serial.print(" dB");
-
   // ตรวจสอบระดับเสียง
   if (decibel > 70.8) {  // สามารถปรับเกณฑ์เสียงดังได้ตามต้องการ
     Serial.println("  เสียงดังเกิ๊นนนนนนนนนน");
-    digitalWrite(buzzer, HIGH);
+    digitalWrite(buzzer, LOW);
     delay(500);
   }
   else{
-    digitalWrite(buzzer, LOW);
+    digitalWrite(buzzer, HIGH);
     }
   return decibel;  
 }

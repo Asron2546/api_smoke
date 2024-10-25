@@ -1,4 +1,4 @@
-#define MQ_135 4
+#define MQ_135 A2
 float analysisCO2(int);
 float analysisNH3(int);
 float analysisAcetone(int);

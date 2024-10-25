@@ -1,13 +1,16 @@
 #include <WiFi.h>
 #include <HTTPClient.h>
 
-const char* ssid = "vivoV27";
-const char* password = "0887528810";
+//const char* ssid = "vivoV27";
+//const char* password = "0887528810";
 
 //const char *ssid = "Ronvisly";
 //const char *password = "88888888";
 
-const char *serverName = "http://172.25.60.224:3000/api/data"; // Replace with your server IP or API URL
+const char *ssid = "VIRUS_2.4GHz";
+const char *password = "073332227";
+
+const char *serverName = "http://192.168.1.109:3000/api/data"; // Replace with your server IP or API URL
 
 void setup() {
   Serial.begin(115200);

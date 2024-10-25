@@ -13,10 +13,14 @@ long last_time,last_time1;
 
 //const char *ssid = "RMUTSV_IoT";
 //const char *password = "CoE39201";
-const char *ssid = "Error404_2.4GHz";
-const char *password = "10011001";
+//const char *ssid = "Error404_2.4GHz";
+//const char *password = "10011001";
+//const char *ssid = "Ronvisly";    // ใส่ชื่อ Wi-Fi
+//const char *password = "88888888";  // ใส่รหัสผ่าน Wi-Fi
+const char *ssid = "VIRUS_2.4GHz";
+const char *password = "073332227";
 
-const char *serverName = "http://192.168.1.9:3000/api/data"; 
+const char *serverName = "http://192.168.1.109:3000/api/data"; 
 String smoke_detector = "001";
 
 // ฟังก์ชันสำหรับการเชื่อมต่อ WiFi
@@ -62,7 +66,7 @@ void setup() {
   Serial.begin(115200);
   Serial1.begin(9600, SERIAL_8N1, 6, 7); // ใช้ Serial1 แทน SoftwareSerial
   pinMode(buzzer, OUTPUT);        // buzzer
-  digitalWrite(buzzer, LOW);
+  digitalWrite(buzzer, HIGH);
   pinMode(led_state, OUTPUT);     // led_state
   digitalWrite(led_state, LOW);
   
@@ -72,10 +76,10 @@ void setup() {
 }
 
 void loop() {
-  if(millis() - last_time1 > 100){
-      soundSensor();
-      last_time1 = millis();
-  }
+//  if(millis() - last_time1 > 100){
+//      soundSensor();
+//      last_time1 = millis();
+//  }
   if(millis() - last_time > 5000){
     if(WiFi.status() == WL_CONNECTED) {
       String pm1 = "0";
@@ -97,7 +101,6 @@ void loop() {
       String co2 = String(analysisco2(sensorValue), 3);
       String ammonia = String(analysisammonia(sensorValue), 3);
       String gas = String(analysisgas(sensorValue), 3);
-    
       Serial.println("\nco2: " + co2 + "  ammonia: " + ammonia +"  gas: " + gas);
         
       // ส่งข้อมูลไปยัง API
