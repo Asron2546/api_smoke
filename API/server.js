@@ -36,10 +36,12 @@ const Data = mongoose.model('Data', DataSchema, 'value');    //ชื่อ coll
 // POST route to receive data from ESP32
 app.post('/api/data', (req, res) => {
     const { smoke_detector, pm1, pm2_5, pm10, temperature, humidity, co2, ammonia, gas  } = req.body;
-    //const { smoke_detector, pm1, pm2_5, pm10 } = req.body;
     
-    const data = new Data({ smoke_detector, pm1, pm2_5, pm10, temperature, humidity, co2, ammonia, gas });
-    //const data = new Data({ smoke_detector, pm1, pm2_5, pm10 });
+    // กำหนด timestamp ในเขตเวลาไทย
+    const bangkokTime = new Date(Date.now() + 7 * 60 * 60 * 1000);  // เพิ่มเวลา UTC+7
+
+    const data = new Data({ smoke_detector, pm1, pm2_5, pm10, temperature, humidity, co2, ammonia, gas, timestamp: bangkokTime });
+     
                             
     data.save()
         .then(() => res.status(201).send('Data saved successfully'))
