@@ -15,22 +15,33 @@ long last_time,last_time1;
 //const char *password = "CoE39201";
 //const char *ssid = "Error404_2.4GHz";
 //const char *password = "10011001";
-//const char *ssid = "Ronvisly";    // ใส่ชื่อ Wi-Fi
-//const char *password = "88888888";  // ใส่รหัสผ่าน Wi-Fi
-const char *ssid = "VIRUS_2.4GHz";
-const char *password = "073332227";
+const char *ssid = "Ronvisly";    // ใส่ชื่อ Wi-Fi
+const char *password = "88888888";  // ใส่รหัสผ่าน Wi-Fi
+//const char *ssid = "VIRUS_2.4GHz";
+//const char *password = "073332227";
 
-const char *serverName = "http://192.168.1.109:3000/api/data"; 
+const char *serverName = "http://172.24.113.4:3000/api/data"; 
 String smoke_detector = "001";
 
 // ฟังก์ชันสำหรับการเชื่อมต่อ WiFi
 void connectWiFi() {
   WiFi.begin(ssid, password);
   while (WiFi.status() != WL_CONNECTED) {
-    delay(1000);
+    delay(500);
+    digitalWrite(led_state, LOW);
+    delay(250);
+    digitalWrite(led_state, HIGH);
+    delay(250);
+    digitalWrite(led_state, LOW);
     Serial.println("Connecting to WiFi...");
   }
   Serial.println("Connected to WiFi");
+  for(int i = 0; i < 4; i++){
+      digitalWrite(led_state, HIGH);
+      delay(100);
+      digitalWrite(led_state, LOW);
+      delay(100);
+  }
 }
 
 // ฟังก์ชันสำหรับการส่งข้อมูลไปยัง API
@@ -105,6 +116,7 @@ void loop() {
         
       // ส่งข้อมูลไปยัง API
       sendData(smoke_detector, pm1, pm2_5, pm10, temperature, humidity, co2, ammonia, gas);
+      
       last_time = millis();
      }
   }
