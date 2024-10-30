@@ -13,16 +13,16 @@ long last_time,last_time1;
 
 //const char *ssid = "RMUTSV_IoT";
 //const char *password = "CoE39201";
-//const char *ssid = "Error404_2.4GHz";
-//const char *password = "10011001";
-const char *ssid = "Ronvisly";    // ใส่ชื่อ Wi-Fi
-const char *password = "88888888";  // ใส่รหัสผ่าน Wi-Fi
+const char *ssid = "Error404_2.4GHz";
+const char *password = "10011001";
+//const char *ssid = "Ronvisly";    // ใส่ชื่อ Wi-Fi
+//const char *password = "88888888";  // ใส่รหัสผ่าน Wi-Fi
 //const char *ssid = "VIRUS_2.4GHz";
 //const char *password = "073332227";
 
-const char *serverName = "http://172.24.113.4:3000/api/data"; 
+const char *serverName = "http://192.168.1.26:3000/api/data"; 
 String smoke_detector = "001";
-
+  
 // ฟังก์ชันสำหรับการเชื่อมต่อ WiFi
 void connectWiFi() {
   WiFi.begin(ssid, password);
