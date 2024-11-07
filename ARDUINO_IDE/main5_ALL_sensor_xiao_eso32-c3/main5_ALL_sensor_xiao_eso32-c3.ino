@@ -13,16 +13,16 @@ long last_time;
 volatile bool sound_state = 0;
 unsigned long sound_time = 0; // ใช้สำหรับจับเวลา
 
-const char *ssid = "RMUTSV_IoT";
-const char *password = "CoE39201";
-//const char *ssid = "Error404_2.4GHz";
-//const char *password = "10011001";
+//const char *ssid = "RMUTSV_IoT";
+//const char *password = "CoE39201";
+const char *ssid = "Error404_2.4GHz";
+const char *password = "10011001";
 //const char *ssid = "Ronvisly";    // ใส่ชื่อ Wi-Fi
 //const char *password = "88888888";  // ใส่รหัสผ่าน Wi-Fi
 //const char *ssid = "VIRUS_2.4GHz";
 //const char *password = "073332227";
 
-const char *serverName = "http://172.16.8.155:5000/devices/data/device001";
+const char *serverName = "http://192.168.1.4:5000/devices/data/device001";
   
 // ฟังก์ชันสำหรับการเชื่อมต่อ WiFi
 void connectWiFi() {
